@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+Route::get('/', 'Web\HomeController@index')->name('web.index');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('profile', 'UserController@profile')->name('profile');
+    Route::resource('user', 'UserController');
+    Route::get('users/{user}/update-password', 'UserController@resetPass')->name('user.resetpass');
+    Route::resource('role', 'RoleController');
+    Route::resource('permission', 'PermissionController');
+    Route::resource('module', 'ModuleController');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
