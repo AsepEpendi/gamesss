@@ -72,6 +72,8 @@ class ModuleController extends Controller
     public function edit($id)
     {
         //
+        $module = Module::find($id);
+        return view('module.edit', compact('module'));
     }
 
     /**
@@ -84,6 +86,14 @@ class ModuleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name' => 'required|unique:modules,name,' . $id
+        ]);
+        $module = Module::find($id);
+        $module->name = $request->name;
+        $module->update();
+
+        return redirect()->route('module.index')->with('success', __('Module Berhasil diupdate'));
     }
 
     /**

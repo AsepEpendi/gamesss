@@ -1,4 +1,4 @@
-@extends('layouts.backend.layouts.app')
+@extends('layouts.backend.app')
 
 @section('page-title')
 {{__('Ubah Permission')}}
@@ -55,8 +55,10 @@
                                     @enderror
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route ('permission.index')}}" class="btn btn-secondary"> Kembali</a>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="{{ route ('permission.index')}}" class="btn btn-secondary"> Kembali</a>
+                            </div>
                         {!! Form::close() !!}
                     </div>
                 </div>

@@ -24,24 +24,24 @@ class UserSeeder extends Seeder
 
         $adminRole = Role::where('name', 'administrator')->first();
         $adminPermission = [
-            // 'manage-pengguna',
-            // 'edit-pengguna',
-            // 'create-pengguna',
-            // 'reset-password',
-            // 'reset-account',
-            // 'manage-role',
-            // 'create-role',
-            // 'edit-role',
-            // 'manage-permissions',
-            // 'create-permissions',
-            // 'edit-permissions',
-            // 'manage-module',
-            // 'create-module',
-            // 'edit-module',
-            // 'delete-module',
-            // 'manage-pengaturan',
-            // 'create-pengaturan',
-            // 'edit-pengaturan'
+            'manage-pengguna',
+            'edit-pengguna',
+            'create-pengguna',
+            'reset-password',
+            'reset-account',
+            'manage-role',
+            'create-role',
+            'edit-role',
+            'manage-permissions',
+            'create-permissions',
+            'edit-permissions',
+            'manage-module',
+            'create-module',
+            'edit-module',
+            'delete-module',
+            'manage-pengaturan',
+            'create-pengaturan',
+            'edit-pengaturan'
         ];
 
         // User Admin

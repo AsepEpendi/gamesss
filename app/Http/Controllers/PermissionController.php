@@ -47,7 +47,7 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
     }
@@ -86,6 +86,17 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'display_name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $permission = Permission::find($id);
+        $permission->display_name = $request->display_name;
+        $permission->description = $request->description;
+        $permission->update();
+
+        return redirect()->route('permission.index')->with('success', __('Permission Berhasil diupdate'));
     }
 
     /**

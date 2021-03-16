@@ -1,7 +1,6 @@
 @extends('layouts.backend.app')
 
 @section('content')
-
 <div class="content">
     <div class="content">
         <div class="container-fluid">

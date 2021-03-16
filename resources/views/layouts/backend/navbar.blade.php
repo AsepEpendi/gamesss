@@ -110,26 +110,7 @@
             {{-- @permission('manage-setting|manage-module|manage-permissions|manage-role|manage-user') --}}
                 <li class="menu-title">Management</li>
             {{-- @endpermission --}}
-            {{-- @permission('manage-setting') --}}
-                <li class="#">
-                    <a class="nav-link" href="#"><i class="mdi mdi-settings-outline mdi-24px text-warning">
-                        </i> <span>{{  __('Pengaturan') }} </span></a>
-                </li>
-            {{-- @endpermission --}}
-            {{-- @permission('manage-module') --}}
-                <li>
-                    <a href="{{ route('module.index') }}" class="waves-effect {{ set_active_navbar(['module.index', 'module.edit'])}}">
-                        <i class="mdi mdi-database-check mdi-24px text-warning"></i><span> Module </span>
-                    </a>
-                </li>
-            {{-- @endpermission() --}}
-            {{-- @permission('manage-permissions') --}}
-            <li class="{{ set_active_navbar(['permission.index', 'permission.edit'])}}">
-                <a href="{{ route('permission.index') }}" class="waves-effect {{ set_active_navbar(['permission.index', 'permission.edit'])}}">
-                    <i class="mdi mdi-security mdi-24px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Permission </span>
-                </a>
-            </li>
-            {{-- @endpermission --}}
+
             {{-- @permission('manage-role') --}}
             <li class="{{ set_active_navbar(['role.index', 'role.edit', 'role.create'])}}">
                 <a href="{{ route('role.index') }}" class="waves-effect {{ set_active_navbar(['role.index', 'role.edit', 'role.create'])}}">
@@ -137,12 +118,36 @@
                 </a>
             </li>
             {{-- @endpermission --}}
+
+            {{-- @permission('manage-module') --}}
+            <li>
+                <a href="{{ route('module.index') }}" class="waves-effect {{ set_active_navbar(['module.index', 'module.edit'])}}">
+                    <i class="mdi mdi-database-check mdi-24px text-warning"></i><span> Module </span>
+                </a>
+            </li>
+            {{-- @endpermission() --}}
+
             {{-- @permission('manage-pengguna') --}}
-            <li class="{{ set_active_navbar(['user.index', 'user.edit', 'user.create', 'reset.password'])}}">
-                <a href="{{ route('user.index') }}" class="waves-effect {{ set_active_navbar(['user.index', 'user.edit', 'user.create', 'reset.password'])}}">
+            <li class="{{ set_active_navbar(['user.index', 'user.edit', 'user.create', 'reset.password', 'user.resetpass'])}}">
+                <a href="{{ route('user.index') }}" class="waves-effect {{ set_active_navbar(['user.index', 'user.edit', 'user.create', 'reset.password', 'user.resetpass'])}}">
                     <i class="mdi mdi-account-key-outline mdi-24px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Pengguna </span>
                 </a>
             </li>
+            {{-- @endpermission --}}
+
+            {{-- @permission('manage-permissions') --}}
+            <li class="{{ set_active_navbar(['permission.index', 'permission.edit'])}}">
+                <a href="{{ route('permission.index') }}" class="waves-effect {{ set_active_navbar(['permission.index', 'permission.edit'])}}">
+                    <i class="mdi mdi-security mdi-24px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Permission </span>
+                </a>
+            </li>
+            {{-- @endpermission --}}
+
+            {{-- @permission('manage-setting') --}}
+                <li class="#">
+                    <a class="nav-link" href="{{ route('settings') }}"><i class="mdi mdi-settings-outline mdi-24px text-warning">
+                        </i> <span>{{  __('Pengaturan') }} </span></a>
+                </li>
             {{-- @endpermission --}}
             </ul>
         </div>

@@ -1,7 +1,7 @@
 <?php
 
 use App\Module;
-use App\Permission;
+use Laratrust\Models\LaratrustPermission as Permission;
 use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
@@ -186,6 +186,38 @@ class PermissionSeeder extends Seeder
                 'display_name' => $key['display_name'],
                 'description' => $key['description'],
                 'module_id' => $modulePengaturan->id
+            ]);
+        }
+
+        // Email
+        $moduleEmail = Module::create([
+            'name' => 'Module Email'
+        ]);
+
+        $permissionModuleEmail = [
+            [
+                'name' => 'manage-email',
+                'display_name' => 'Manage Email',
+                'description' => 'Bisa Memanage Email'
+            ],
+            [
+                'name' => 'create-email',
+                'display_name' => 'Create Email',
+                'description' => 'Bisa Membuat Email'
+            ],
+            [
+                'name' => 'edit-email',
+                'display_name' => 'Edit Email',
+                'description' => 'Bisa Mengedit Email'
+            ]
+        ];
+
+        foreach ($permissionModuleEmail as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleEmail->id
             ]);
         }
     }

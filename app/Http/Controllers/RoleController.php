@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Module;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\Role;
+
+
 
 class RoleController extends Controller
 {
@@ -34,7 +37,7 @@ class RoleController extends Controller
                         $permisson_name .= ' ' . '<span class="badge badge-primary">' .
                         $row->permission->display_name . '</span>';
                     }
-                    return  $permisson_name;
+                    return $permisson_name;
                 })
                 ->rawColumns(['permission_role', 'action'])
             ->make(true);
@@ -84,6 +87,13 @@ class RoleController extends Controller
     public function edit($id)
     {
         //
+        $module = Module::with([
+            'permission'
+        ])
+            ->whereHas('permission')
+            ->get();
+        $role = Role::find($id);
+        return view('role.edit', compact('role', 'module'));
     }
 
     /**
@@ -96,6 +106,19 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'name' => 'required|unique:roles,name,' . $id,
+            'display_name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $role = Role::find($id);
+        $role->name = $request->name;
+        $role->display_name = $request->display_name;
+        $role->description = $request->description;
+        $role->update();
+
+        return redirect()->route('role.index')->with('success', __('Role Berhasil diupdate'));
     }
 
     /**

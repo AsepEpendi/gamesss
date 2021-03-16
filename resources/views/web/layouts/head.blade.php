@@ -1,7 +1,7 @@
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Gamesss | Home</title>
+    <title>Gamesss | @yield('page-title')</title>
 
     <meta name="description" content="Gamesss - Gaming HTML Template based on Bootstrap">
     <meta name="keywords" content="gaming, game, community, template, html, bootstrap, webpack">
