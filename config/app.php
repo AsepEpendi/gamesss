@@ -1,5 +1,7 @@
 <?php
 
+use App\Setting;
+
 return [
 
     /*
@@ -233,6 +235,7 @@ return [
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Setting' => App\Setting::class,
 
     ],
 

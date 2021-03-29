@@ -18,7 +18,7 @@ class Setting extends Model
         $data = $data->get();
 
         $settings = [
-            "title_text" => "GAMESSS",
+            "title_text" => "Gamesss",
             "footer_text" => "GAMESSS",
             "site_currency_symbol" => "Rp ",
             "company_name" => "Gamesss",
@@ -59,7 +59,7 @@ class Setting extends Model
                 $keyPosition       = strpos($str, "{$envKey}=");
                 $endOfLinePosition = strpos($str, "\n", $keyPosition);
                 $oldLine           = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
-                // If key does not exist, add it
+
                 if (!$keyPosition || !$endOfLinePosition || !$oldLine) {
                     $str .= "{$envKey}='{$envValue}'\n";
                 } else {

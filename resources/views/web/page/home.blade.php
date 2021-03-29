@@ -35,22 +35,21 @@
 
 <div class="content-wrap">
     <section class="youplay-banner banner-top youplay-banner-parallax">
-        <div class="image" data-speed="0.4">
-            <img src="{{ asset('webs/images/dark/banner-bg.jpg') }}" alt="" class="jarallax-img">
-        </div>
-        <div class="info">
-            <div>
+        <div class="banner">
+            @foreach ($banners as $banner)
+            <div class="image" data-speed="0.4">
+                <img src="{{ asset('storage/banner/'. $banner->img) }}" alt="" class="jarallax-img">
+            </div>
+            <div class="info">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
-                            <h1 class="h1">Gamesss - Home</h1>
-                            <p class="lead">
-                                You are not limited to the features of this template. It is suitable for gaming site,
-                                and for any business project. Pre-packed demos will help you to quickly run your new
-                                creative website.
-                            </p>
+                            <h1 class="h1">{{$banner->short_text}}</h1>
+                            <h5 class="lead">
+                                {!!$banner->description!!}
+                            </h5>
                             <br>
-                            <a class="btn btn-md active" href="#demo"><i class="fa fa-eye"></i>&nbsp; Demo</a>
+                            <a href="{{$banner->link}}" class="btn btn-md active">  <i class="fa fa-eye"></i>&nbsp; {{$banner->text_link}}</a>
                             <a class="btn btn-md" href="#">
                                 <i class="fa fa-shopping-cart"></i>&nbsp; Purchase
                             </a>
@@ -58,6 +57,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
     <!-- /Banner -->

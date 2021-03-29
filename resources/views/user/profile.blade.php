@@ -14,7 +14,7 @@
         <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <h4 class="page-title">Profile Account</h4>
+                    <h4 class="page-title">Profil Akun</h4>
                 </div>
             </div>
         </div>
@@ -48,14 +48,14 @@
                         <div class="faq-icon float-right">
                             <i class="fas fa-user font-24 mt-2 text-primary"></i>
                         </div>
-                        <h5 class="text-primary">Manage Account</h5>
+                        <h5 class="text-primary">Manajemen Akun</h5>
                         <div class="setting-tab">
                             <ul class="nav nav-pills mb-3" id="myTab3" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#personal_info" role="tab" aria-controls="" aria-selected="true">{{__('Personal Info')}}</a>
+                                    <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#personal_info" role="tab" aria-controls="" aria-selected="true">{{__('Informasi Akun')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#change_password" role="tab" aria-controls="" aria-selected="false">{{__('Change Password')}}</a>
+                                    <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#change_password" role="tab" aria-controls="" aria-selected="false">{{__('Ubah Kata sandi')}}</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent2">
@@ -64,23 +64,21 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                {{Form::label('name',__('Name'),array('class'=>'form-control-label'))}}
-                                                {{Form::text('name',null,array('class'=>'form-control font-style','placeholder'=>_('Enter User Name')))}}
+                                                {{Form::label('name',__('Nama'),array('class'=>'form-control-label'))}}
+                                                {{Form::text('name',null,array('class'=>'form-control font-style','placeholder'=>_('Masukkan Nama')))}}
                                                 @error('name')
                                                 <span class="invalid-name" role="alert">
                                                         <strong class="text-danger">{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                                 <br>
-                                                {{-- <div class="col-md-6"> --}}
-                                                    {{Form::label('email',__('Email'),array('class'=>'form-control-label'))}}
-                                                    {{Form::text('email',null,array('class'=>'form-control','placeholder'=>__('Enter User Email')))}}
-                                                    @error('email')
-                                                    <span class="invalid-email" role="alert">
-                                                            <strong class="text-danger">{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                {{-- </div> --}}
+                                                {{Form::label('email',__('Email'),array('class'=>'form-control-label'))}}
+                                                {{Form::text('email',null,array('class'=>'form-control','placeholder'=>__('Masukkan Email')))}}
+                                                @error('email')
+                                                <span class="invalid-email" role="alert">
+                                                        <strong class="text-danger">{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -90,19 +88,19 @@
                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
                                                 <div>
                                                     <span class="btn btn-primary btn-file">
-                                                        <span class="fileinput-new"> {{__('Select image')}} </span>
-                                                        <span class="fileinput-exists"> {{__('Change')}} </span>
+                                                        <span class="fileinput-new"> {{__('Pilih gambar')}} </span>
+                                                        <span class="fileinput-exists"> {{__('Ubah')}} </span>
                                                         <input type="hidden">
                                                         <input type="file" name="profile" id="logo">
                                                     </span>
-                                                    <a href="javascript:;" class="btn btn-danger fileinput-exists" data-dismiss="fileinput"> {{__('Remove')}} </a>
+                                                    <a href="javascript:;" class="btn btn-danger fileinput-exists" data-dismiss="fileinput"> {{__('Hapus')}} </a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 text-right">
-                                            <a href="{{ route('home') }}" class="btn btn-secondary">{{__('Cancel')}}</a>
+                                            <a href="{{ route('home') }}" class="btn btn-secondary">{{__('Kembali')}}</a>
                                             {{-- @permission('edit-account') --}}
-                                                {{Form::submit('Save Change',array('class'=>'btn btn-primary'))}}
+                                                {{Form::submit('Simpan',array('class'=>'btn btn-primary'))}}
                                             {{-- @endpermission --}}
                                         </div>
                                     </div>
@@ -114,7 +112,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    {{Form::label('current_password',__('Current Password'),array('class'=>'form-control-label'))}}
+                                                    {{Form::label('current_password',__('Kata sandi Lama'),array('class'=>'form-control-label'))}}
                                                     {{Form::password('current_password',null,array('class'=>'form-control','placeholder'=>_('Enter Current Password')))}}
                                                     @error('current_password')
                                                     <span class="invalid-current_password" role="alert">
@@ -123,7 +121,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    {{Form::label('new_password',__('New Password'),array('class'=>'form-control-label'))}}
+                                                    {{Form::label('new_password',__('Kata sandi Baru'),array('class'=>'form-control-label'))}}
                                                     {{Form::password('new_password',null,array('class'=>'form-control','placeholder'=>_('Enter New Password')))}}
                                                     @error('new_password')
                                                     <span class="invalid-new_password" role="alert">
@@ -132,7 +130,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    {{Form::label('confirm_password',__('Re-type New Password'),array('class'=>'form-control-label'))}}
+                                                    {{Form::label('confirm_password',__('Ketik ulang Kata sandi'),array('class'=>'form-control-label'))}}
                                                     {{Form::password('confirm_password',null,array('class'=>'form-control','placeholder'=>_('Enter Re-type New Password')))}}
                                                     @error('confirm_password')
                                                     <span class="invalid-confirm_password" role="alert">
@@ -142,9 +140,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-right">
-                                                <a href="{{ route('home') }}" class="btn btn-secondary">{{__('Cancel')}}</a>
+                                                <a href="{{ route('home') }}" class="btn btn-secondary">{{__('Kembali')}}</a>
                                                 {{-- @permission('change-password-account') --}}
-                                                {{Form::submit('Save Change',array('class'=>'btn btn-primary'))}}
+                                                {{Form::submit('Simpan',array('class'=>'btn btn-primary'))}}
                                                 {{-- @endpermission --}}
                                             </div>
                                         </div>

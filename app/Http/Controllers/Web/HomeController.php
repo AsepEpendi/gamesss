@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Banner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,18 @@ class HomeController extends Controller
     public function index()
     {
         //
-        return view('web.page.home');
+        // $customer = Customer::orderBy('id', 'DESC')->limit(8)->get();
+        // $product = Product::with('product_category', 'product_img')
+        //     ->whereHas('product_img', function ($sql) {
+        //         $sql->select();
+        //     })
+        //     ->where('status', 'publish')->orderBy('id', 'DESC')->limit(7)
+        //     ->get();
+        // $articles = Post::limit(10)->orderBy('id', 'DESC')->get();
+        // $testimony_customer = TestimonyCustomer::with('customer')->orderBy('id', 'DESC')->limit(10)->get();
+        $banners = Banner::where('status', '1')->get();
+
+        return view('web.page.home', compact('customer', 'product', 'product_category', 'product_images', 'articles', 'testimony_customer', 'banners'));
     }
 
     /**

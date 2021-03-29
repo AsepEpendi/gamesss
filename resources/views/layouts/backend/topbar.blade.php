@@ -5,7 +5,7 @@
 @endphp
 <div class="topbar">
     <div class="topbar-left">
-        <a href="{{ url('/') }}" class="logo">
+        <a href="{{ route('home') }}" class="logo">
             <span class="logo-light">
                 <img class="img-fluid" src="{{$logo.'/logo.png'}} " alt="" width="80">
             </span>
@@ -52,9 +52,9 @@
                             <i class="mdi mdi-power text-danger"></i>
                             {{ __('Logout') }}
                         </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </li>

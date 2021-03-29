@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Setjting;
+use App\Setting;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -81,7 +81,7 @@ class SettingsController extends Controller
                 unset($post['_token']);
                 foreach ($post as $key => $data) {
                     \DB::insert(
-                        'insert into settings (`value`, `name`) values (?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ',
+                        'insert into setting_tables  (`value`, `name`) values (?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ',
                         [
                             $data,
                             $key,
@@ -157,7 +157,7 @@ class SettingsController extends Controller
 
             foreach ($post as $key => $data) {
                 \DB::insert(
-                    'insert into settings (`value`, `name`) values (?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ',
+                    'insert into setting_tables (`value`, `name`) values (?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ',
                     [
                         $data,
                         $key,
@@ -187,7 +187,7 @@ class SettingsController extends Controller
 
             foreach ($post as $key => $data) {
                 \DB::insert(
-                    'insert into settings (`value`, `name`) values (?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ',
+                    'insert into setting_tables (`value`, `name`) values (?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ',
                     [
                         $data,
                         $key,
@@ -228,7 +228,7 @@ class SettingsController extends Controller
                 'MAIL_FROM_NAME' => $request->mail_from_name,
                 'MAIL_FROM_ADDRESS' => $request->mail_from_address,
             ];
-            Utility::setEnvironmentValue($arrEnv);
+            Setting::setEnvironmentValue($arrEnv);
 
             return redirect()->back()->with('success', __('Email berhasil diupdate'));
         } else {

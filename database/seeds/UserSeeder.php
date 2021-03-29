@@ -41,7 +41,26 @@ class UserSeeder extends Seeder
             'delete-module',
             'manage-pengaturan',
             'create-pengaturan',
-            'edit-pengaturan'
+            'edit-pengaturan',
+            'manage-email',
+            'create-email',
+            'edit-email',
+            'manage-banner',
+            'create-banner',
+            'edit-banner',
+            'delete-banner',
+            'manage-post',
+            'create-post',
+            'edit-post',
+            'delete-post',
+            'manage-category',
+            'create-category',
+            'edit-category',
+            'delete-category',
+            'manage-tags',
+            'create-tags',
+            'edit-tags',
+            'delete-tags'
         ];
 
         // User Admin

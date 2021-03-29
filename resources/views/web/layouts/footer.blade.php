@@ -41,7 +41,7 @@
         <!-- Copyright -->
         <div class="copyright">
             <div class="container">
-                <p>2021 &copy; <strong>gamesss</strong>. All rights reserved</p>
+                {{(Setting::getValByName('footer_text')) ? Setting::getValByName('footer_text') :  __('Copyright AccountGo') }} {{ date('Y') }} <small>Powered By <a href="http://asepit.com/" target="_blank">ASEPIT</a></small>
             </div>
         </div>
         <!-- /Copyright -->

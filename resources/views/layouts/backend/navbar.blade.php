@@ -12,25 +12,25 @@
                     </a>
                 </li>
                 <li>
-                    {{-- @permission('manage-posts|manage-category|manage-tags') --}}
+                    @permission('manage-post|manage-category|manage-tags')
                     <a href="#" class="waves-effect"><i class="mdi mdi-file mdi-24px text-info"></i><span> Post <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    {{-- @endpermission --}}
+                    @endpermission
                     <ul class="submenu">
-                        {{-- @permission('manage-posts') --}}
+                        @permission('manage-post')
                         <li class="#">
-                            <a href="#"><i class="mdi mdi-notebook-multiple text-warning"></i> All Post</a>
+                            <a href="{{ route('post.index') }}"><i class="mdi mdi-notebook-multiple text-warning"></i> All Post</a>
                         </li>
-                        {{-- @endpermission --}}
-                        {{-- @permission('manage-category') --}}
+                        @endpermission
+                        @permission('manage-category')
                         <li>
                             <a href="#"><i class="mdi mdi-bookmark-multiple text-warning"></i> Category</a>
                         </li>
-                        {{-- @endpermission --}}
-                        {{-- @permission('manage-tags') --}}
+                        @endpermission
+                        @permission('manage-tags')
                         <li>
                             <a href="#"><i class="fa fa-tags text-warning"></i> Tags</a>
                         </li>
-                        {{-- @endpermission --}}
+                        @endpermission
                     </ul>
                 </li>
                 <li>
@@ -97,13 +97,13 @@
                     </ul>
                 </li>
 
-                {{-- @permission('manage-banner') --}}
+                @permission('manage-banner')
                 <li class="{{ set_active_navbar(['banner.index', 'banner.create', 'banner.edit'])}}">
-                    <a href="#" class="waves-effect {{ set_active_navbar(['banner.index', 'banner.create', 'banner.edit'])}}">
+                    <a href="{{ route('banner.index') }}" class="waves-effect {{ set_active_navbar(['banner.index', 'banner.create', 'banner.edit'])}}">
                         <i class="mdi mdi-bootstrap mdi-24px text-info"></i><span class="badge badge-success badge-pill float-right"></span> <span> Banner</span>
                     </a>
                 </li>
-                {{-- @endpermission --}}
+                @endpermission
             </ul>
 
             <ul class="metismenu" id="management">

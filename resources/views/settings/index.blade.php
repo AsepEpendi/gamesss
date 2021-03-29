@@ -183,8 +183,8 @@
                                                     {{Form::text('company_phone',null,array('class'=>'form-control font-style'))}}
                                                     @error('company_phone')
                                                     <span class="invalid-company_phone" role="alert">
-                                                                <strong class="text-danger">{{ $message }}</strong>
-                                                            </span>
+                                                        <strong class="text-danger">{{ $message }}</strong>
+                                                    </span>
                                                     @enderror
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -209,18 +209,18 @@
                                                     {{Form::label('phone_wa',__('No HP (WA)')) }}
                                                     {{Form::text('phone_wa',null,array('class'=>'form-control font-style'))}}
                                                     @error('phone_wa')
-                                                        <span class="invalid-phone_wa" role="alert">
-                                                            <strong class="text-danger">{{ $message }}</strong>
-                                                        </span>
+                                                    <span class="invalid-phone_wa" role="alert">
+                                                        <strong class="text-danger">{{ $message }}</strong>
+                                                    </span>
                                                     @enderror
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     {{Form::label('text_wa',__('Teks Bawaan (WA)')) }}
                                                     {{Form::textarea('text_wa',null,array('class'=>'form-control font-style', 'rows'=> '3'))}}
                                                     @error('text_wa')
-                                                        <span class="invalid-text_wa" role="alert">
-                                                            <strong class="text-danger">{{ $message }}</strong>
-                                                        </span>
+                                                    <span class="invalid-text_wa" role="alert">
+                                                        <strong class="text-danger">{{ $message }}</strong>
+                                                    </span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -240,8 +240,8 @@
                                                 {{Form::text('mail_driver',env('MAIL_DRIVER'),array('class'=>'form-control','placeholder'=>__('Enter Mail Driver')))}}
                                                 @error('mail_driver')
                                                 <span class="invalid-mail_driver" role="alert">
-                                                 <strong class="text-danger">{{ $message }}</strong>
-                                                 </span>
+                                                    <strong class="text-danger">{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
@@ -249,8 +249,8 @@
                                                 {{Form::text('mail_host',env('MAIL_HOST'),array('class'=>'form-control ','placeholder'=>__('Enter Mail Driver')))}}
                                                 @error('mail_host')
                                                 <span class="invalid-mail_driver" role="alert">
-                                                 <strong class="text-danger">{{ $message }}</strong>
-                                                 </span>
+                                                    <strong class="text-danger">{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
@@ -267,8 +267,8 @@
                                                 {{Form::text('mail_username',env('MAIL_USERNAME'),array('class'=>'form-control','placeholder'=>__('Enter Mail Username')))}}
                                                 @error('mail_username')
                                                 <span class="invalid-mail_username" role="alert">
-                                                 <strong class="text-danger">{{ $message }}</strong>
-                                                 </span>
+                                                    <strong class="text-danger">{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
@@ -276,8 +276,8 @@
                                                 {{Form::text('mail_password',env('MAIL_PASSWORD'),array('class'=>'form-control','placeholder'=>__('Enter Mail Password')))}}
                                                 @error('mail_password')
                                                 <span class="invalid-mail_password" role="alert">
-                                                 <strong class="text-danger">{{ $message }}</strong>
-                                                 </span>
+                                                    <strong class="text-danger">{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
@@ -285,8 +285,8 @@
                                                 {{Form::text('mail_encryption',env('MAIL_ENCRYPTION'),array('class'=>'form-control','placeholder'=>__('Enter Mail Encryption')))}}
                                                 @error('mail_encryption')
                                                 <span class="invalid-mail_encryption" role="alert">
-                                                 <strong class="text-danger">{{ $message }}</strong>
-                                                 </span>
+                                                    <strong class="text-danger">{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
@@ -294,8 +294,8 @@
                                                 {{Form::text('mail_from_address',env('MAIL_FROM_ADDRESS'),array('class'=>'form-control','placeholder'=>__('Enter Mail From Address')))}}
                                                 @error('mail_from_address')
                                                 <span class="invalid-mail_from_address" role="alert">
-                                                 <strong class="text-danger">{{ $message }}</strong>
-                                                 </span>
+                                                    <strong class="text-danger">{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-4">
@@ -303,8 +303,8 @@
                                                 {{Form::text('mail_from_name',env('MAIL_FROM_NAME'),array('class'=>'form-control','placeholder'=>__('Enter Mail Encryption')))}}
                                                 @error('mail_from_name')
                                                 <span class="invalid-mail_from_name" role="alert">
-                                                 <strong class="text-danger">{{ $message }}</strong>
-                                                 </span>
+                                                    <strong class="text-danger">{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                         </div>

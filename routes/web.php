@@ -31,4 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('social-media', 'SettingsController@SosmedSettings')->name('sosmed.setting');
     Route::post('email-settings', 'SettingsController@EmailSettings')->name('email.setting');
     Route::get('settings', 'SettingsController@index')->name('settings');
+    Route::resource('banner', 'BannerController');
+    Route::resource('post', 'PostController');
 });

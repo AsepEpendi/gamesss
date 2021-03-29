@@ -220,5 +220,153 @@ class PermissionSeeder extends Seeder
                 'module_id' => $moduleEmail->id
             ]);
         }
+
+        // Banner
+        $moduleBanner = Module::create([
+            'name' => 'Module Banner'
+        ]);
+
+        $permissionModuleBanner = [
+            [
+                'name' => 'manage-banner',
+                'display_name' => 'Manage Banner',
+                'description' => 'Bisa Memanage Banner'
+            ],
+            [
+                'name' => 'create-banner',
+                'display_name' => 'Create Banner',
+                'description' => 'Bisa Membuat Banner'
+            ],
+            [
+                'name' => 'edit-banner',
+                'display_name' => 'Edit Banner',
+                'description' => 'Bisa Mengedit Banner'
+            ],
+            [
+                'name' => 'delete-banner',
+                'display_name' => 'Delete Banner',
+                'description' => 'Bisa Menghapus Banner'
+            ]
+        ];
+
+        foreach ($permissionModuleBanner as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleBanner->id
+            ]);
+        }
+
+        // Post
+        $modulePost = Module::create([
+            'name' => 'Module Post'
+        ]);
+
+        $permissionModulePost = [
+            [
+                'name' => 'manage-post',
+                'display_name' => 'Manage Post',
+                'description' => 'Bisa Memanage Post'
+            ],
+            [
+                'name' => 'create-post',
+                'display_name' => 'Create Post',
+                'description' => 'Bisa Membuat Post'
+            ],
+            [
+                'name' => 'edit-post',
+                'display_name' => 'Edit Post',
+                'description' => 'Bisa Mengedit Post'
+            ],
+            [
+                'name' => 'delete-post',
+                'display_name' => 'Delete Post',
+                'description' => 'Bisa Menghapus Post'
+            ]
+        ];
+
+        foreach ($permissionModulePost as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $modulePost->id
+            ]);
+        }
+
+        // Category
+        $moduleCategory = Module::create([
+            'name' => 'Module Category'
+        ]);
+
+        $permissionModuleCategory = [
+            [
+                'name' => 'manage-category',
+                'display_name' => 'Manage Kategori',
+                'description' => 'Bisa Memanage Kategori'
+            ],
+            [
+                'name' => 'create-category',
+                'display_name' => 'Create Kategori',
+                'description' => 'Bisa Membuat Kategori'
+            ],
+            [
+                'name' => 'edit-category',
+                'display_name' => 'Edit Kategori',
+                'description' => 'Bisa Mengedit Kategori'
+            ],
+            [
+                'name' => 'delete-category',
+                'display_name' => 'Delete Kategori',
+                'description' => 'Bisa Menghapus Kategori'
+            ]
+        ];
+
+        foreach ($permissionModuleCategory as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleCategory->id
+            ]);
+        }
+
+        // Tags
+        $moduleTags = Module::create([
+            'name' => 'Module Tags'
+        ]);
+
+        $permissionModuleTags = [
+            [
+                'name' => 'manage-tags',
+                'display_name' => 'Manage Tags',
+                'description' => 'Bisa Memanage Tags'
+            ],
+            [
+                'name' => 'create-tags',
+                'display_name' => 'Create Tags',
+                'description' => 'Bisa Membuat Tags'
+            ],
+            [
+                'name' => 'edit-tags',
+                'display_name' => 'Edit Tags',
+                'description' => 'Bisa Mengedit Tags'
+            ],
+            [
+                'name' => 'delete-tags',
+                'display_name' => 'Delete Tags',
+                'description' => 'Bisa Menghapus Tags'
+            ]
+        ];
+
+        foreach ($permissionModuleTags as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleTags->id
+            ]);
+        }
     }
 }

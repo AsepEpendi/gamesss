@@ -1,4 +1,4 @@
-        {{-- <title>{{(Setting::getValByName('title_text')) ? Setting::getValByName('title_text') : config('app.name', 'AccountGo')}} - @yield('page-title')</title> --}}
+        <title>{{(Setting::getValByName('title_text')) ? Setting::getValByName('title_text') : config('app.name', 'AccountGo')}} - @yield('page-title')</title>
         <title>Gamesss | @yield('page-title')</title>
         <link rel="icon" href="{{asset(Storage::url('logo')).'/favicon.png'}}" type="image" sizes="16x16">
         <link href="{{ asset('assets-backend/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
