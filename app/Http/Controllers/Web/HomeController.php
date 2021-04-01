@@ -27,7 +27,7 @@ class HomeController extends Controller
         // $testimony_customer = TestimonyCustomer::with('customer')->orderBy('id', 'DESC')->limit(10)->get();
         $banners = Banner::where('status', '1')->get();
 
-        return view('web.page.home', compact('customer', 'product', 'product_category', 'product_images', 'articles', 'testimony_customer', 'banners'));
+        return view('web.page.home', compact('banners'));
     }
 
     /**
