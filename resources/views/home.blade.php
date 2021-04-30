@@ -53,10 +53,10 @@
                     <div class="card">
                         <div class="card-heading p-4">
                             <div class="mini-stat-icon float-right">
-                                <i class="mdi mdi-tag-text-outline bg-warning text-white"></i>
+                                <i class="mdi mdi-eye bg-warning text-white"></i>
                             </div>
                             <div>
-                                <h5 class="font-16">Views Product</h5>
+                                <h5 class="font-16">Views Channels</h5>
                             </div>
                             {{-- <h3 class="mt-4">{{ $data['viewed_product'] }}</h3> --}}
                         </div>

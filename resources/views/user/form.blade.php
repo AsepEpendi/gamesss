@@ -32,28 +32,6 @@
         @enderror
     </div>
 </div>
-<div class="form-group row">
-    <label class="col-4 col-form-label" for="example-input-normal">Password</label>
-    <div class="col-8">
-        {!! Form::password('password', ['class' => $errors->has('password') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Masukan Password'])!!}
-        @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-<div class="form-group row">
-    <label class="col-4 col-form-label" for="example-input-normal">Konfirmasi Password</label>
-    <div class="col-8">
-        {!! Form::password('password_confirmation', ['class' => $errors->has('password_confirmation') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Konfirmasi Password'])!!}
-        @error('password_confirmation')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
 <div class="text-right">
     <button type="submit" class="btn btn-primary">Simpan</button>
     <a href="{{ route('user.index') }}" class="btn btn-secondary">Kembali</a>

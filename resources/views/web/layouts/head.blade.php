@@ -1,13 +1,18 @@
+@php
+    $logo=asset(Storage::url('logo/'));
+    $profile=asset(Storage::url('avatar/'));
+    $users=\Auth::user();
+@endphp
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Gamesss | @yield('page-title')</title>
+    <title>Gamesss - @yield('page-title')</title>
 
     <meta name="description" content="Gamesss - Gaming HTML Template based on Bootstrap">
     <meta name="keywords" content="gaming, game, community, template, html, bootstrap, webpack">
     <meta name="author" content="nK">
 
-    <link rel="icon" type="image/png" href="{{ asset('webs/images/dark/icon.png') }}">
+    <link rel="icon" type="image/png" href="{{$logo.'/small_logo.png'}}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -37,8 +42,7 @@
     <link rel="stylesheet" href="{{ asset('webs/vendor/social-likes/dist/social-likes_flat.css') }}" />
 
     <!-- FontAwesome -->
-
-
+    
     <!-- Youplay -->
     <link rel="stylesheet" href="{{ asset('webs/css/youplay.css') }}">
 

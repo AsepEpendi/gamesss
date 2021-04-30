@@ -11,92 +11,6 @@
                         <i class="mdi mdi-home-account mdi-24px text-info"></i><span class="badge badge-success badge-pill float-right"></span> <span> Dashboard </span>
                     </a>
                 </li>
-                <li>
-                    @permission('manage-post|manage-category|manage-tags')
-                    <a href="#" class="waves-effect"><i class="mdi mdi-file mdi-24px text-info"></i><span> Post <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    @endpermission
-                    <ul class="submenu">
-                        @permission('manage-post')
-                        <li class="#">
-                            <a href="{{ route('post.index') }}"><i class="mdi mdi-notebook-multiple text-warning"></i> All Post</a>
-                        </li>
-                        @endpermission
-                        @permission('manage-category')
-                        <li>
-                            <a href="#"><i class="mdi mdi-bookmark-multiple text-warning"></i> Category</a>
-                        </li>
-                        @endpermission
-                        @permission('manage-tags')
-                        <li>
-                            <a href="#"><i class="fa fa-tags text-warning"></i> Tags</a>
-                        </li>
-                        @endpermission
-                    </ul>
-                </li>
-                <li>
-                    {{-- @permission('manage-product|manage-product-category') --}}
-                    <a href="#" class="waves-effect"><i class="mdi mdi-pinterest mdi-24px text-info"></i><span> Product <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    {{-- @endpermission --}}
-                    <ul class="submenu">
-                        {{-- @permission('manage-product') --}}
-                        <li class="{{ set_active_navbar(['product.index', 'product.create', 'product.edit'])}}">
-                            <a href="#" class="waves-effect">
-                                <i class="mdi mdi-pinterest-box mdi-18px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Product</span>
-                            </a>
-                        </li>
-                        {{-- @endpermission --}}
-                        {{-- @permission('manage-product-category') --}}
-                        <li>
-                            <a href="#" class="waves-effect">
-                                <i class="mdi mdi-pinterest mdi-18px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Product Category </span>
-                            </a>
-                        </li>
-                        {{-- @endpermission --}}
-                    </ul>
-                </li>
-                <li>
-                    {{-- @permission('manage-page|manage-page-component') --}}
-                    <a href="#" class="waves-effect"><i class="mdi mdi-pinterest-box mdi-24px text-info"></i><span> Page <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    {{-- @endpermission --}}
-                    <ul class="submenu">
-                        {{-- @permission('manage-page') --}}
-                        <li>
-                            <a href="#" class="waves-effect">
-                                <i class="mdi mdi-book-open-page-variant mdi-18px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Page</span>
-                            </a>
-                        </li>
-                        {{-- @endpermission --}}
-                        {{-- @permission('manage-page-component') --}}
-                        <li class="{{ set_active_navbar(['page-component.index', 'page-component.create', 'page-component.edit'])}}">
-                            <a href="#" class="waves-effect {{ set_active_navbar(['page-component.index', 'page-component.create', 'page-component.edit'])}}">
-                                <i class="mdi mdi-book-variant mdi-18px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Page Component</span>
-                            </a>
-                        </li>
-                        {{-- @endpermission --}}
-                    </ul>
-                </li>
-                <li>
-                    {{-- @permission('manage-customer|manage-testimony-customer') --}}
-                    <a href="#" class="waves-effect"><i class="mdi mdi-account-group mdi-24px text-info"></i><span> Customer <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    {{-- @endpermission --}}
-                    <ul class="submenu">
-                        {{-- @permission('manage-customer') --}}
-                        <li class="{{ set_active_navbar(['customer.index', 'customer.create', 'customer.edit'])}}">
-                            <a href="#" class="waves-effect {{ set_active_navbar(['customer.index', 'customer.create', 'customer.edit'])}}">
-                                <i class="mdi mdi-account mdi-18px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Customer</span>
-                            </a>
-                        </li>
-                        {{-- @endpermission --}}
-                        {{-- @permission('manage-testimony-customer') --}}
-                        <li class="{{ set_active_navbar(['testimony-customer.index', 'testimony-customer.create', 'testimony-customer.edit'])}}">
-                            <a href="#" class="waves-effect {{ set_active_navbar(['testimony-customer.index', 'testimony-customer.create', 'testimony-customer.edit'])}}">
-                                <i class="mdi mdi-account-badge-horizontal mdi-18px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Testimony Customer</span>
-                            </a>
-                        </li>
-                        {{-- @endpermission --}}
-                    </ul>
-                </li>
-
                 @permission('manage-banner')
                 <li class="{{ set_active_navbar(['banner.index', 'banner.create', 'banner.edit'])}}">
                     <a href="{{ route('banner.index') }}" class="waves-effect {{ set_active_navbar(['banner.index', 'banner.create', 'banner.edit'])}}">
@@ -104,56 +18,80 @@
                     </a>
                 </li>
                 @endpermission
+                @permission('manage-e-sport-category')
+                <li class="{{ set_active_navbar(['e-sport-category.index', 'e-sport-category.create', 'e-sport-category.edit'])}}">
+                    <a href="{{ route('e-sport-category.index') }}" class="waves-effect {{ set_active_navbar(['e-sport-category.index', 'e-sport-category.create', 'e-sport-category.edit'])}}">
+                        <i class="mdi mdi-library mdi-24px text-info"></i><span class="badge badge-success badge-pill float-right"></span> <span> E-Sport Category</span>
+                    </a>
+                </li>
+                @endpermission
+                @permission('manage-e-sport-team')
+                <li class="{{ set_active_navbar(['e-sport-team.index', 'e-sport-team.create', 'e-sport-team.edit'])}}">
+                    <a href="{{ route('e-sport-team.index') }}" class="waves-effect {{ set_active_navbar(['e-sport-team.index', 'e-sport-team.create', 'e-sport-team.edit'])}}">
+                        <i class="mdi mdi-bootstrap mdi-24px text-info"></i><span class="badge badge-success badge-pill float-right"></span> <span> E-Sport Team</span>
+                    </a>
+                </li>
+                @endpermission
+                @permission('manage-channel')
+                <li class="{{ set_active_navbar(['channel.index', 'channel.create', 'channel.edit'])}}">
+                    <a href="{{ route('channel.index') }}" class="waves-effect {{ set_active_navbar(['channel.index', 'channel.create', 'channel.edit'])}}">
+                        <i class="mdi mdi-youtube mdi-24px text-info"></i><span class="badge badge-success badge-pill float-right"></span> <span> Channels</span>
+                    </a>
+                </li>
+                @endpermission
+                @permission('manage-schedule')
+                <li class="{{ set_active_navbar(['schedule.index', 'schedule.create', 'schedule.edit'])}}">
+                    <a href="{{ route('schedule.index') }}" class="waves-effect {{ set_active_navbar(['schedule.index', 'schedule.create', 'schedule.edit'])}}">
+                        <i class="mdi mdi-timetable mdi-24px text-info"></i><span class="badge badge-success badge-pill float-right"></span> <span> Schedules</span>
+                    </a>
+                </li>
+                @endpermission
             </ul>
 
             <ul class="metismenu" id="management">
-            {{-- @permission('manage-setting|manage-module|manage-permissions|manage-role|manage-user') --}}
+            @permission('manage-pengaturan|manage-module|manage-permissions|manage-role|manage-pengguna')
                 <li class="menu-title">Management</li>
-            {{-- @endpermission --}}
+            @endpermission
 
-            {{-- @permission('manage-role') --}}
+            @permission('manage-role')
             <li class="{{ set_active_navbar(['role.index', 'role.edit', 'role.create'])}}">
                 <a href="{{ route('role.index') }}" class="waves-effect {{ set_active_navbar(['role.index', 'role.edit', 'role.create'])}}">
                     <i class="mdi mdi-arrow-decision-outline mdi-24px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Role </span>
                 </a>
             </li>
-            {{-- @endpermission --}}
-
-            {{-- @permission('manage-module') --}}
+            @endpermission
+            @permission('manage-module')
             <li>
                 <a href="{{ route('module.index') }}" class="waves-effect {{ set_active_navbar(['module.index', 'module.edit'])}}">
                     <i class="mdi mdi-database-check mdi-24px text-warning"></i><span> Module </span>
                 </a>
             </li>
-            {{-- @endpermission() --}}
-
-            {{-- @permission('manage-pengguna') --}}
+            @endpermission()
+            @permission('manage-pengguna')
             <li class="{{ set_active_navbar(['user.index', 'user.edit', 'user.create', 'reset.password', 'user.resetpass'])}}">
                 <a href="{{ route('user.index') }}" class="waves-effect {{ set_active_navbar(['user.index', 'user.edit', 'user.create', 'reset.password', 'user.resetpass'])}}">
                     <i class="mdi mdi-account-key-outline mdi-24px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Pengguna </span>
                 </a>
             </li>
-            {{-- @endpermission --}}
-
-            {{-- @permission('manage-permissions') --}}
+            @endpermission
+            @permission('manage-permissions')
             <li class="{{ set_active_navbar(['permission.index', 'permission.edit'])}}">
                 <a href="{{ route('permission.index') }}" class="waves-effect {{ set_active_navbar(['permission.index', 'permission.edit'])}}">
                     <i class="mdi mdi-security mdi-24px text-warning"></i><span class="badge badge-success badge-pill float-right"></span> <span> Permission </span>
                 </a>
             </li>
-            {{-- @endpermission --}}
-
-            {{-- @permission('manage-setting') --}}
+            @endpermission
+            @permission('manage-pengaturan')
                 <li class="#">
                     <a class="nav-link" href="{{ route('settings') }}"><i class="mdi mdi-settings-outline mdi-24px text-warning">
-                        </i> <span>{{  __('Pengaturan') }} </span></a>
+                        </i> <span>{{  __('Pengaturan') }} </span>
+                    </a>
                 </li>
-            {{-- @endpermission --}}
+            @endpermission
             </ul>
         </div>
         <!-- Sidebar -->
         <div class="clearfix"></div>
     </div>
     <!-- Sidebar -left -->
-
 </div>

@@ -19,30 +19,35 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         //
-        if ($request->ajax()){
-            $role = Role::with([
-                'permission_role' => function ($sql){
-                    $sql->with('permission');
-                }
-            ]);
-            return DataTables::of($role)
-                ->addColumn('action', function ($role){
-                    return view('datatables.nondelete', [
-                        'edit_url' => route('role.edit', $role->id),
-                    ]);
-                })
-                ->editColumn('permission_role', function ($role) {
-                    $permisson_name = '';
-                    foreach ($role->permission_role as $row) {
-                        $permisson_name .= ' ' . '<span class="badge badge-primary">' .
-                        $row->permission->display_name . '</span>';
+        if (\Auth::user()->can('manage-role')) {
+            # code...
+            if ($request->ajax()){
+                $role = Role::with([
+                    'permission_role' => function ($sql){
+                        $sql->with('permission');
                     }
-                    return $permisson_name;
-                })
-                ->rawColumns(['permission_role', 'action'])
-            ->make(true);
+                ]);
+                return DataTables::of($role)
+                    ->addColumn('action', function ($role){
+                        return view('datatables.nondelete', [
+                            'edit_url' => route('role.edit', $role->id),
+                        ]);
+                    })
+                    ->editColumn('permission_role', function ($role) {
+                        $permisson_name = '';
+                        foreach ($role->permission_role as $row) {
+                            $permisson_name .= ' ' . '<span class="badge badge-primary">' .
+                            $row->permission->display_name . '</span>';
+                        }
+                        return $permisson_name;
+                    })
+                    ->rawColumns(['permission_role', 'action'])
+                ->make(true);
+            }
+            return view('role.index');
+        }else{
+            return redirect()->back()->with('error', __('Permission denied'));
         }
-        return view('role.index');
     }
 
     /**
@@ -53,7 +58,12 @@ class RoleController extends Controller
     public function create()
     {
         //
-        return view('role.create');
+        if (\Auth::user()->can('create-role')) {
+            # code...
+            return view('role.create');
+        }else{
+            return redirect()->back()->with('error', __('Permission denied'));
+        }
     }
 
     /**
@@ -65,6 +75,24 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
+        if (\Auth::user()->can('create-role')) {
+            # code...
+            $this->validate($request, [
+                'name' => 'required|unique:roles',
+                'display_name' => 'required',
+                'description' => 'required'
+            ]);
+
+            $role = new Role();
+            $role->name = $request->name;
+            $role->display_name = $request->display_name;
+            $role->description = $request->description;
+            $role->save();
+
+            return redirect()->route('role.edit', $role->id)->with('success', __('Role successfully created'));
+        }else{
+            return redirect()->back()->with('error', 'Permission denied');
+        }
     }
 
     /**
@@ -87,13 +115,18 @@ class RoleController extends Controller
     public function edit($id)
     {
         //
-        $module = Module::with([
-            'permission'
-        ])
-            ->whereHas('permission')
-            ->get();
-        $role = Role::find($id);
-        return view('role.edit', compact('role', 'module'));
+        if (\Auth::user()->can('edit-role')) {
+            # code...
+            $module = Module::with([
+                'permission'
+            ])
+                ->whereHas('permission')
+                ->get();
+            $role = Role::find($id);
+            return view('role.edit', compact('role', 'module'));
+        }else{
+            return redirect()->back()->with('error', 'Permission denied');
+        }
     }
 
     /**
@@ -106,19 +139,24 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[
-            'name' => 'required|unique:roles,name,' . $id,
-            'display_name' => 'required',
-            'description' => 'required'
-        ]);
+        if (\Auth::user()->can('edit-role')) {
+            # code...
+            $this->validate($request,[
+                'name' => 'required|unique:roles,name,' . $id,
+                'display_name' => 'required',
+                'description' => 'required'
+            ]);
 
-        $role = Role::find($id);
-        $role->name = $request->name;
-        $role->display_name = $request->display_name;
-        $role->description = $request->description;
-        $role->update();
+            $role = Role::find($id);
+            $role->name = $request->name;
+            $role->display_name = $request->display_name;
+            $role->description = $request->description;
+            $role->update();
 
-        return redirect()->route('role.index')->with('success', __('Role Berhasil diupdate'));
+            return redirect()->route('role.index')->with('success', __('Role Berhasil diupdate'));
+        }else{
+            return redirect()->back()->with('error', 'Permission denied');
+        }
     }
 
     /**

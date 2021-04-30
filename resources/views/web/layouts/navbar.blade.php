@@ -1,3 +1,8 @@
+@php
+    $logo=asset(Storage::url('logo/'));
+    $profile=asset(Storage::url('avatar/'));
+    $users=\Auth::user();
+@endphp
 <nav class="navbar-youplay navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -8,7 +13,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('webs/images/logo-light.png') }}" alt="">
+                <img src="{{$logo.'/logo.png'}}" alt="">
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -123,15 +128,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ route('web.matches') }}">
                                     Matches List
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                            {{-- <li>
+                                <a href="{{ route('web.match') }}">
                                     Match
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="#">
                                     Match with Maps

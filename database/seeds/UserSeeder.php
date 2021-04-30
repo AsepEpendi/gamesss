@@ -60,7 +60,23 @@ class UserSeeder extends Seeder
             'manage-tags',
             'create-tags',
             'edit-tags',
-            'delete-tags'
+            'delete-tags',
+            'manage-e-sport-category',
+            'create-e-sport-category',
+            'edit-e-sport-category',
+            'delete-e-sport-category',
+            'manage-e-sport-team',
+            'create-e-sport-team',
+            'edit-e-sport-team',
+            'delete-e-sport-team',
+            'manage-channel',
+            'create-channel',
+            'edit-channel',
+            'delete-channel',
+            'manage-schedule',
+            'create-schedule',
+            'edit-schedule',
+            'delete-schedule'
         ];
 
         // User Admin
@@ -77,20 +93,5 @@ class UserSeeder extends Seeder
         }
 
         $admin->attachRole($adminRole);
-
-        // User Biasa
-        // $user = User::create([
-        //     'name' => 'User',
-        //     'email' => 'user@gmail.com',
-        //     'password' => bcrypt('rahasia')
-        // ]);
-
-        // foreach ($adminPermission as $ap) {
-        //     # code...
-        //     $permission = Permission::where('name', $ap)->first();
-        //     $adminRole->attachPermission($permission->id);
-        // }
-
-        // $user->attachRole($adminRole);
     }
 }

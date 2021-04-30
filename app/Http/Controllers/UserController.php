@@ -54,7 +54,12 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('user.create');
+        if (\Auth::user()->can('create-pengguna')) {
+            # code...
+            return view('user.create');
+        }else{
+            return redirect()->back()->with('error', 'Permission denied');
+        }
     }
 
     /**
@@ -110,23 +115,28 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = DB::table('users')
-        ->join('role_user', 'role_user.user_id', '=', 'users.id')
-        ->join('roles', 'role_user.role_id', '=', 'roles.id')
-        ->select(
-            'users.id as id',
-            'users.name as name',
-            'users.email as email',
-            'roles.name as role_name',
-            'roles.id as role_id'
-        )
-        ->where('users.id', $id)
-        ->first();
+        if (\Auth::user()->can('edit-pengguna')) {
+            # code...
+            $user = DB::table('users')
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
+            ->join('roles', 'role_user.role_id', '=', 'roles.id')
+            ->select(
+                'users.id as id',
+                'users.name as name',
+                'users.email as email',
+                'roles.name as role_name',
+                'roles.id as role_id'
+            )
+            ->where('users.id', $id)
+            ->first();
 
-        if ($user->role_name == 'operator'){
-            return redirect()->route('user.index');
+            if ($user->role_name == 'operator'){
+                return redirect()->route('user.index');
+            }else{
+                return view('user.edit', compact('user'));
+            }
         }else{
-            return view('user.index', compact('user', 'roles'));
+            return redirect()->back()->with('error', 'Permission denied');
         }
     }
 
@@ -140,21 +150,26 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, [
-            'email' => 'required|unique:users,email,' . $id,
-            'role_id' => 'required',
-            'name' => 'required'
-        ]);
+        if (\Auth::user()->can('edit-pengguna')) {
+            # code...
+            $this->validate($request, [
+                'email' => 'required|unique:users,email,' . $id,
+                'role_id' => 'required',
+                'name' => 'required'
+            ]);
 
-        $user = User::find($id);
-        $user->email = $request->email;
-        $user->name = $request->name;
-        $user->update();
+            $user = User::find($id);
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->update();
 
-        DB::table('role_user')->where('user_id', '=', $id)
-            ->update(['role_id' => $request->role_id]);
+            DB::table('role_user')->where('user_id', '=', $id)
+                ->update(['role_id' => $request->role_id]);
 
-        return redirect()->route('user.index')->with('success', __('Pengguna Berhasil diupdate'));
+            return redirect()->route('user.index')->with('success', __('Pengguna Berhasil diupdate'));
+        }else{
+            return redirect()->back()->with('error', 'Permission denied');
+        }
     }
 
     /**
@@ -171,113 +186,127 @@ class UserController extends Controller
     //
     public function profile()
     {
-        // dd('tes');
         //
         $userDetail = \Auth::user();
         return view('user.profile')->with('userDetail', $userDetail);
     }
 
     //
-    public function editProfile(Request $request)
-    {
-        # code...
-        $userDetail = \Auth::user();
-        $user       = User::findOrFail($userDetail['id']);
-        $this->validate(
-            $request,
-            [
-                'name' => 'required|max:120',
-                'email' => 'required|email|unique:users,email,' . $userDetail['id'],
-            ]
-        );
-        // if ($request->hasFile('profile')) {
-        //     $filenameWithExt = $request->file('profile')->getClientOriginalName();
-        //     $filename        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        //     $extension       = $request->file('profile')->getClientOriginalExtension();
-        //     $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+    // public function editProfile(Request $request)
+    // {
+    //     # code...
+    //     $userDetail = \Auth::user();
+    //     $user       = User::findOrFail($userDetail['id']);
+    //     $this->validate(
+    //         $request,
+    //         [
+    //             'name' => 'required|max:120',
+    //             'email' => 'required|email|unique:users,email,' . $userDetail['id'],
+    //         ]
+    //     );
+    //     if ($request->hasFile('profile')) {
+    //         $filenameWithExt = $request->file('profile')->getClientOriginalName();
+    //         $filename        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+    //         $extension       = $request->file('profile')->getClientOriginalExtension();
+    //         $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
-        //     $dir        = storage_path('app/public/avatar/');
-        //     $image_path = $dir . $userDetail['avatar'];
+    //         $dir        = storage_path('app/public/avatar/');
+    //         $image_path = $dir . $userDetail['avatar'];
 
-        //     if (File::exists($image_path)) {
-        //         File::delete($image_path);
-        //     }
+    //         if (File::exists($image_path)) {
+    //             File::delete($image_path);
+    //         }
 
-        //     if (!file_exists($dir)) {
-        //         mkdir($dir, 0777, true);
-        //     }
+    //         if (!file_exists($dir)) {
+    //             mkdir($dir, 0777, true);
+    //         }
 
-        //     $path = $request->file('profile')->storeAs('public/avatar/', $fileNameToStore);
-        // }
+    //         $path = $request->file('profile')->storeAs('public/avatar/', $fileNameToStore);
+    //     }
 
-        // if (!empty($request->profile)) {
-        //     $user['avatar'] = $fileNameToStore;
-        // }
-        $user['name']  = $request['name'];
-        $user['email'] = $request['email'];
-        $user->save();
+    //     if (!empty($request->profile)) {
+    //         $user['avatar'] = $fileNameToStore;
+    //     }
+    //     $user['name']  = $request['name'];
+    //     $user['email'] = $request['email'];
+    //     $user->save();
 
-        return redirect()->route('home')->with(
-            'success',
-            'Profile Berhasil diupdate.'
-        );
-    }
+    //     return redirect()->route('home')->with(
+    //         'success',
+    //         'Profile Berhasil diupdate.'
+    //     );
+    // }
 
     //
     public function resetPass($id)
     {
         //
-        $user = DB::table('role_user')
+        if (\Auth::user()->can('reset-password')) {
+            # code...
+            $user = DB::table('role_user')
             ->join('users', 'role_user.user_id', '=', 'users.id')
             ->join('roles', 'role_user.role_id', '=', 'roles.id')
             ->select('role_user.*', 'users.name', 'users.email', 'users.id', 'roles.display_name')
             ->where('users.id', '=', $id)
             ->first();
 
-        return view('user.reset-password')->with(compact('user'));
+            return view('user.reset-password')->with(compact('user'));
+        }else{
+            return redirect()->back()->with('error', 'Permission denied');
+        }
     }
 
     //
     public function updatePass(Request $request,$id)
     {
         # code...
-        $this->validate($request, ['password' => 'required']);
+        if (\Auth::user()->can('reset-password')) {
+            # code...
+            $this->validate($request, ['password' => 'required']);
             $password = bcrypt($request->password);
             DB::table('users')->where('id', '=', $id)->update(['password' => $password]);
             Session::flash("flash_notification", [
                 "level" => "success",
                 "message" => "Pengguna Berhasil Mengedit Passwordnya"
             ]);
-        return redirect()->route('user.index')->with('success', __('Password Berhasil diupdate'));
+
+            return redirect()->route('user.index')->with('success', __('Password Berhasil diupdate'));
+        }else{
+            return redirect()->back()->with('error', 'permission denied');
+        }
     }
 
     //
     public function updatePassAccount(Request $request)
     {
-        # code...
-        if (Auth::Check()) {
-            $request->validate(
-                [
-                    'current_password' => 'required',
-                    'new_password' => 'required|min:6',
-                    'confirm_password' => 'required|same:new_password',
-                ]
-            );
-            $objUser          = Auth::user();
-            $request_data     = $request->All();
-            $current_password = $objUser->password;
-            if (Hash::check($request_data['current_password'], $current_password)) {
-                $user_id            = Auth::User()->id;
-                $obj_user           = User::find($user_id);
-                $obj_user->password = Hash::make($request_data['new_password']);;
-                $obj_user->save();
+        if (\Auth::user()->can('reset-account')) {
+            # code...
+            if (Auth::Check()) {
+                $request->validate(
+                    [
+                        'current_password' => 'required',
+                        'new_password' => 'required|min:6',
+                        'confirm_password' => 'required|same:new_password',
+                    ]
+                );
+                $objUser          = Auth::user();
+                $request_data     = $request->All();
+                $current_password = $objUser->password;
+                if (Hash::check($request_data['current_password'], $current_password)) {
+                    $user_id            = Auth::User()->id;
+                    $obj_user           = User::find($user_id);
+                    $obj_user->password = Hash::make($request_data['new_password']);;
+                    $obj_user->save();
 
-                return redirect()->route('profile', $objUser->id)->with('success', __('Password Berhasil diupdate'));
+                    return redirect()->route('profile', $objUser->id)->with('success', __('Password Berhasil diupdate'));
+                } else {
+                    return redirect()->route('profile', $objUser->id)->with('error', __('Please enter correct current password.'));
+                }
             } else {
-                return redirect()->route('profile', $objUser->id)->with('error', __('Please enter correct current password.'));
+                return redirect()->route('profile', \Auth::user()->id)->with('error', __('Something is wrong.'));
             }
-        } else {
-            return redirect()->route('profile', \Auth::user()->id)->with('error', __('Something is wrong.'));
+        }else{
+            return redirect()->back()->with('error', 'Permission denied');
         }
     }
 }

@@ -33,4 +33,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('settings', 'SettingsController@index')->name('settings');
     Route::resource('banner', 'BannerController');
     Route::resource('post', 'PostController');
+    Route::resource('e-sport-category', 'ESportCategoryController');
+    Route::resource('e-sport-team', 'ESportTeamController');
+    Route::resource('channel', 'ChannelController');
+    Route::resource('schedule', 'ScheduleController');
 });
+// Route::get('match', 'Web\WebController@match')->name('web.match');
+Route::get('matches-list', 'Web\WebController@matches')->name('web.matches');
+Route::get('/match/{slug}', 'Web\WebController@match')->name('web.match');
+

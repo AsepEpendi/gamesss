@@ -17,18 +17,23 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         //
-        if ($request->ajax()){
-            $permission = Permission::with('module')->select();
-            return DataTables::of($permission)
-            ->addColumn('action', function ($permission){
-                return view('datatables.nondelete', [
-                    'model' => $permission,
-                    'edit_url' => route('permission.edit', $permission->id),
-                ]);
-            })
-            ->make(true);
+        if (\Auth::user()->can('manage-permissions')) {
+            # code...
+            if ($request->ajax()){
+                $permission = Permission::with('module')->select();
+                return DataTables::of($permission)
+                ->addColumn('action', function ($permission){
+                    return view('datatables.nondelete', [
+                        'model' => $permission,
+                        'edit_url' => route('permission.edit', $permission->id),
+                        'can_edit' => 'edit-permissions'
+                    ]);
+                })
+                ->make(true);
+            }
+            return view('permission.index');
         }
-        return view('permission.index');
+
     }
 
     /**
@@ -72,8 +77,12 @@ class PermissionController extends Controller
     public function edit($id)
     {
         //
-        $permission = Permission::find($id);
-        return view('permission.edit', compact('permission'));
+        if (\Auth::user()->can('edit-permissions')) {
+            # code...
+            $permission = Permission::find($id);
+            return view('permission.edit', compact('permission'));
+        }
+
     }
 
     /**
@@ -123,6 +132,6 @@ class PermissionController extends Controller
     {
         # code...
         $role = Role::find($role_id);
-        $role->dettachPermission($request->permission);
+        $role->detachPermission($request->permission);
     }
 }

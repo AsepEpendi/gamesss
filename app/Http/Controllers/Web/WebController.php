@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Channel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Schedule;
+use App\ScheduleDetail;
+
+
 
 class WebController extends Controller
 {
@@ -12,9 +17,14 @@ class WebController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function matches(Request $request)
     {
         //
+        $matches = Channel::get();
+        // $date = date('Y-m-d', strtotime(now()));
+        $schedule = Schedule::with('enemy_team', 'team_esport')->get();
+
+        return view('web.page.matches', compact('matches', 'schedule'));
     }
 
     /**
@@ -22,9 +32,16 @@ class WebController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function match($slug)
     {
         //
+        $channels = Channel::where('slug', $slug);
+        $channel = $channels->first();
+        $hits = $channel->hits;
+        $channels->update(['hits' => $hits + 1]);
+
+        $schedule = Schedule::with('enemy_team', 'team_esport')->get();
+        return view('web.page.match', compact('channel', 'schedule'));
     }
 
     /**

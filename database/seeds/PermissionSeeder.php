@@ -368,5 +368,153 @@ class PermissionSeeder extends Seeder
                 'module_id' => $moduleTags->id
             ]);
         }
+
+        // E-Sport Category
+        $moduleEsportCategory = Module::create([
+            'name' => 'Module E-Sport Category'
+        ]);
+
+        $permissionModuleEsportCategory = [
+            [
+                'name' => 'manage-e-sport-category',
+                'display_name' => 'Manage E-Sport Category',
+                'description' => 'Bisa Memanage E-Sport Category'
+            ],
+            [
+                'name' => 'create-e-sport-category',
+                'display_name' => 'Create E-Sport Category',
+                'description' => 'Bisa Membuat E-Sport Category'
+            ],
+            [
+                'name' => 'edit-e-sport-category',
+                'display_name' => 'Edit E-Sport Category',
+                'description' => 'Bisa Mengedit E-Sport Category'
+            ],
+            [
+                'name' => 'delete-e-sport-category',
+                'display_name' => 'Delete E-Sport Category',
+                'description' => 'Bisa Menghapus E-Sport Category'
+            ]
+        ];
+
+        foreach ($permissionModuleEsportCategory as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleEsportCategory->id
+            ]);
+        }
+
+        // E-Sport Team
+        $moduleEsportTeam = Module::create([
+            'name' => 'Module E-Sport Team'
+        ]);
+
+        $permissionModuleEsportTeam = [
+            [
+                'name' => 'manage-e-sport-team',
+                'display_name' => 'Manage E-Sport Team',
+                'description' => 'Bisa Memanage E-Sport Team'
+            ],
+            [
+                'name' => 'create-e-sport-team',
+                'display_name' => 'Create E-Sport Team',
+                'description' => 'Bisa Membuat E-Sport Team'
+            ],
+            [
+                'name' => 'edit-e-sport-team',
+                'display_name' => 'Edit E-Sport Team',
+                'description' => 'Bisa Mengedit E-Sport Team'
+            ],
+            [
+                'name' => 'delete-e-sport-team',
+                'display_name' => 'Delete E-Sport Team',
+                'description' => 'Bisa Menghapus E-Sport Team'
+            ]
+        ];
+
+        foreach ($permissionModuleEsportTeam as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleEsportTeam->id
+            ]);
+        }
+
+        // Channels
+        $moduleChannel = Module::create([
+            'name' => 'Module Channel'
+        ]);
+
+        $permissionModuleChannel = [
+            [
+                'name' => 'manage-channel',
+                'display_name' => 'Manage Channel',
+                'description' => 'Bisa Memanage Channel'
+            ],
+            [
+                'name' => 'create-channel',
+                'display_name' => 'Create Channel',
+                'description' => 'Bisa Membuat Channel'
+            ],
+            [
+                'name' => 'edit-channel',
+                'display_name' => 'Edit Channel',
+                'description' => 'Bisa Mengedit Channel'
+            ],
+            [
+                'name' => 'delete-channel',
+                'display_name' => 'Delete Channel',
+                'description' => 'Bisa Menghapus Channel'
+            ]
+        ];
+
+        foreach ($permissionModuleChannel as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleChannel->id
+            ]);
+        }
+
+        // Schedule
+        $moduleSchedule = Module::create([
+            'name' => 'Module Schedule'
+        ]);
+
+        $permissionModuleSchedule = [
+            [
+                'name' => 'manage-schedule',
+                'display_name' => 'Manage Schedule',
+                'description' => 'Bisa Memanage Schedule'
+            ],
+            [
+                'name' => 'create-schedule',
+                'display_name' => 'Create Schedule',
+                'description' => 'Bisa Membuat Schedule'
+            ],
+            [
+                'name' => 'edit-schedule',
+                'display_name' => 'Edit Schedule',
+                'description' => 'Bisa Mengedit Schedule'
+            ],
+            [
+                'name' => 'delete-schedule',
+                'display_name' => 'Delete Schedule',
+                'description' => 'Bisa Menghapus Schedule'
+            ]
+        ];
+
+        foreach ($permissionModuleSchedule as $key) {
+            Permission::create([
+                'name' => $key['name'],
+                'display_name' => $key['display_name'],
+                'description' => $key['description'],
+                'module_id' => $moduleSchedule->id
+            ]);
+        }
     }
 }

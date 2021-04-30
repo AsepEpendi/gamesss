@@ -54,8 +54,7 @@
                                         </h5>
                                     </div>
 
-                                    <div id="collapseOne{{$item->id}}" class="collapse false{{ ($accordion == 0) ? 'show' : ''}}"
-                                            aria-labelledby="headingOne{{$item->id}}" style="" data-parent="#accordion">
+                                    <div id="collapseOne{{$item->id}}" class="collapse false{{ ($accordion == 0) ? 'show' : ''}}" aria-labelledby="headingOne{{$item->id}}" style="" data-parent="#accordion">
                                         <div class="card-body">
                                             @foreach ($item->permission as $row)
                                                 <div class="checkbox-inline checkbox-success form-check-inline">

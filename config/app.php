@@ -166,6 +166,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Eusonlito\LaravelMeta\MetaServiceProvider::class,
 
 
         /*
@@ -236,6 +237,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Setting' => App\Setting::class,
+        'Meta'    => Eusonlito\LaravelMeta\Facade::class,
 
     ],
 

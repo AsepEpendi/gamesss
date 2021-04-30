@@ -28,6 +28,7 @@
                         <table id="permission" class="table-sm table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Module</th>
                                 <th>Nama Permission</th>
                                 <th>Display</th>
@@ -58,6 +59,7 @@ $(document).ready(function(){
         serverSide: true,
         ajax: '{{ route('permission.index')}}',
         columns: [
+                { data: 'id', name: 'id'},
                 { data: 'module.name', name: 'module.name' },
                 { data: 'name', name: 'name' },
                 { data: 'display_name', name: 'display_name' },
